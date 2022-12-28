@@ -1,6 +1,6 @@
 {
   "name": "@blockquote/pseudo-css-support",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Detecting Support - CSS pseudo-classes and CSS A CSS pseudo-elements",
   "keywords": [
     "CSS",
@@ -13,14 +13,21 @@
     "type": "git",
     "url": "https://github.com/oscarmarina/pseudo-css-support"
   },
+  "type": "module",
   "license": "MIT",
   "author": "oscar marina",
-  "main": "index.mjs",
+  "main": "index.js",
+  "exports": "./index.js",
   "files": [
     "*.js",
-    "*.mjs",
     "src"
   ],
+  "scripts": {
+    "start": "vite"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  },
   "publishConfig": {
     "access": "public"
   }

@@ -1,1 +1,0 @@
-export { pseudoCssSupport } from './src/pseudoCssSupport.mjs';

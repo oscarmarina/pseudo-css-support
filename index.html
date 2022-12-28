@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pseudo css support</title>
+    <style>
+      /* https://bugs.webkit.org/show_bug.cgi?id=20807 */
+      button:hover,
+      button:focus:not(:focus-visible),
+      button:active {
+        outline: 4px solid blueviolet;
+      }
+
+      button:focus-visible {
+        outline: 4px solid lightskyblue;
+      }
+
+      /* https://browserstrangeness.bitbucket.io/css_hacks.html#safari */
+      @supports (-webkit-hyphens: none) {
+        button:hover,
+        button:focus:not(:focus-visible),
+        button:active {
+          outline: 4px solid salmon;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Open your developer tools</h1>
+    <button>button</button>
+    <script type="module">
+      import { pseudoCssSupport } from './index.js';
+
+      console.info(':focus-visible ', pseudoCssSupport(':focus-visible'));
+      console.info('::part(foo) ', pseudoCssSupport('::part(foo)'));
+      console.info(':has(foo) ', pseudoCssSupport(':has(foo)'));
+      console.info(':lang(xx-XX) ', pseudoCssSupport(':lang(xx-XX)'));
+
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/@property
+      console.info('@property --property-name ', pseudoCssSupport('@property --property-name'));
+
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/:host-context
+      console.info(':host-context(foo) ', pseudoCssSupport(':host-context(foo)'));
+
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/:playing
+      console.info(':playing ', pseudoCssSupport(':playing'));
+    </script>
+  </body>
+</html>

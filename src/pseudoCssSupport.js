@@ -4,7 +4,8 @@ export const pseudoCssSupport = (pseudoCss) => {
 
   try {
     document.head.appendChild(style);
-    style.sheet.insertRule(`${pseudoCss} {}`);
+    const styleSheet = style.sheet;
+    styleSheet.insertRule(`${pseudoCss} {}`);
     isPseudoCssSupported = true;
   } catch (_unused) {
     isPseudoCssSupported = false;
